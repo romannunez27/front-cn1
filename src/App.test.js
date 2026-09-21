@@ -1,8 +1,18 @@
 import { render, screen } from '@testing-library/react';
+import { PublicClientApplication } from '@azure/msal-browser';
+import { MsalProvider } from '@azure/msal-react';
+import { msalConfig } from './authConfig';
 import App from './App';
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('muestra el estado no autenticado', async () => {
+  const pca = new PublicClientApplication(msalConfig);
+  await pca.initialize();
+
+  render(
+    <MsalProvider instance={pca}>
+      <App />
+    </MsalProvider>
+  );
+
+  expect(await screen.findByText(/usuario no autenticado/i)).toBeInTheDocument();
 });

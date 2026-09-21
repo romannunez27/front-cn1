@@ -1,118 +1,165 @@
-import './App.css';
-import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from '@azure/msal-react';
-import { loginRequest, apiRequest } from './authConfig';
-import { useEffect, useState } from 'react';
-import Axios from 'axios';
+import "./App.css";
+
+import {
+  AuthenticatedTemplate,
+  UnauthenticatedTemplate,
+  useMsal
+} from "@azure/msal-react";
+
+import { loginRequest,apiRequest } from "./authConfig";
 
 function App() {
   const { instance, accounts } = useMsal();
-  const [usuarioBackend, setUsuarioBackend] = useState(null);
-  const [errorBackend, setErrorBackend] = useState(null);
 
   const iniciarSesion = () => {
-    instance.loginRedirect(loginRequest)
-      .catch(error => {
-        console.error(error);
-      });
+    instance.loginRedirect(loginRequest).catch((error) => {
+      console.error("Error al iniciar sesión:", error);
+    });
   };
 
   const cerrarSesion = () => {
-    instance.logoutRedirect();
+    instance.logoutRedirect({
+      postLogoutRedirectUri: window.location.origin
+    });
   };
 
-  useEffect(() => {
-    if (accounts.length === 0) {
-      return;
-    }
+  const usuario = accounts.length > 0 ? accounts[0] : null;
 
-    const obtenerUsuarioBackend = async () => {
-      try {
-        const tokenResponse = await instance.acquireTokenSilent({ ...apiRequest, account: accounts[0] });
-        const accessToken = tokenResponse.accessToken;
-        console.log(accessToken);
+  const obtenerIniciales = (nombre) => {
+    if (!nombre) return "U";
 
-        Axios.get("http://localhost:8080/api/usuario", { headers: { Authorization: `Bearer ${accessToken}` } })
-          .then((response) => {
-            console.log(response.data);
-            setUsuarioBackend(response.data);
-          })
-          .catch((error) => {
-            console.log(error);
-            setErrorBackend("Error consultando api");
-          });
-      } catch (error) {
-        console.log("Error obteniendo datos", error);
-        setErrorBackend("No fue posible obtener el access token");
-      }
-    };
-
-    obtenerUsuarioBackend();
-  }, [accounts, instance]);
-
-  const cuenta = accounts[0];
+    return nombre
+        .split(" ")
+        .slice(0, 2)
+        .map((palabra) => palabra.charAt(0))
+        .join("")
+        .toUpperCase();
+  };
 
   return (
-    <div className="app">
-      <main className="panel">
-        <header className="panel-header">
-          <p className="eyebrow">Microsoft Entra ID</p>
-          <h1>Inicio de sesión</h1>
-          <p className="lede">Acceso restringido a usuarios autenticados.</p>
-        </header>
+      <main className="app">
+        <div className="background-decoration decoration-one"></div>
+        <div className="background-decoration decoration-two"></div>
 
         <UnauthenticatedTemplate>
-          <p className="status">No hay una sesión activa.</p>
-          <div className="actions">
-            <button type="button" onClick={iniciarSesion} className="btn btn-primary">
-              Iniciar sesión
-            </button>
-          </div>
+          <section className="login-card">
+            <div className="brand">
+              <div className="brand-icon">M</div>
+
+              <div>
+                <p className="brand-label">CLOUD NATIVE</p>
+                <h1>MesaTech</h1>
+              </div>
+            </div>
+
+            <div className="login-content">
+            <span className="status-badge">
+              Acceso seguro
+            </span>
+
+              <h2>Bienvenido</h2>
+
+              <p className="login-description">
+                Inicia sesión con tu cuenta institucional para acceder a la
+                plataforma.
+              </p>
+
+              <button
+                  className="microsoft-button"
+                  onClick={iniciarSesion}
+              >
+              <span className="microsoft-logo">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+
+                Continuar con Microsoft
+              </button>
+            </div>
+
+            <footer className="login-footer">
+              Autenticación protegida con Microsoft Entra ID
+            </footer>
+          </section>
         </UnauthenticatedTemplate>
 
         <AuthenticatedTemplate>
-          <h2 className="section-title">Sesión</h2>
+          {usuario && (
+              <section className="dashboard-card">
+                <header className="dashboard-header">
+                  <div className="brand">
+                    <div className="brand-icon">M</div>
 
-          {cuenta && (
-            <dl className="fields">
-              <div className="field">
-                <dt>Nombre</dt>
-                <dd>{cuenta.name}</dd>
-              </div>
-              <div className="field">
-                <dt>Usuario</dt>
-                <dd>{cuenta.username}</dd>
-              </div>
-              <div className="field">
-                <dt>Identificador</dt>
-                <dd>{cuenta.idTokenClaims?.oid}</dd>
-              </div>
-            </dl>
+                    <div>
+                      <p className="brand-label">CLOUD NATIVE</p>
+                      <h1>MesaTech</h1>
+                    </div>
+                  </div>
+
+                  <button
+                      className="logout-button"
+                      onClick={cerrarSesion}
+                  >
+                    Cerrar sesión
+                  </button>
+                </header>
+
+                <div className="welcome-section">
+                  <div className="avatar">
+                    {obtenerIniciales(usuario.name)}
+                  </div>
+
+                  <div>
+                    <p className="welcome-label">
+                      Sesión iniciada correctamente
+                    </p>
+
+                    <h2>
+                      Hola, {usuario.name?.split(" ")[0]}
+                    </h2>
+
+                    <p>
+                      Tu identidad fue verificada correctamente mediante
+                      Microsoft Entra ID.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="user-card">
+                  <div className="user-row">
+                    <span className="user-label">Nombre</span>
+                    <span className="user-value">
+                  {usuario.name}
+                </span>
+                  </div>
+
+                  <div className="user-row">
+                    <span className="user-label">Cuenta</span>
+                    <span className="user-value">
+                  {usuario.username}
+                </span>
+                  </div>
+
+                  <div className="user-row">
+                    <span className="user-label">Estado</span>
+
+                    <span className="authenticated-status">
+                  <span className="status-dot"></span>
+                  Autenticado
+                </span>
+                  </div>
+                </div>
+
+                <p className="dashboard-message">
+                  La conexión con el backend de MesaTech se habilitará en la
+                  siguiente etapa.
+                </p>
+              </section>
           )}
-
-          {usuarioBackend && (
-            <>
-              <h2 className="section-title">API</h2>
-              <p className="status">{typeof usuarioBackend === 'string' ? usuarioBackend : JSON.stringify(usuarioBackend)}</p>
-            </>
-          )}
-
-          {errorBackend && <p className="notice">{errorBackend}</p>}
-
-          {cuenta?.idTokenClaims && (
-            <details className="claims">
-              <summary>Claims del token</summary>
-              <pre>{JSON.stringify(cuenta.idTokenClaims, null, 2)}</pre>
-            </details>
-          )}
-
-          <div className="actions">
-            <button type="button" onClick={cerrarSesion} className="btn btn-ghost">
-              Cerrar sesión
-            </button>
-          </div>
         </AuthenticatedTemplate>
       </main>
-    </div>
   );
 }
 
