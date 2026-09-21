@@ -1,38 +1,510 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family:
+          Inter,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+
+  background: #f4f7fb;
+  color: #182230;
+}
+
+button {
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+          radial-gradient(
+                  circle at top left,
+                  rgba(37, 99, 235, 0.09),
+                  transparent 35%
+          ),
+          radial-gradient(
+                  circle at bottom right,
+                  rgba(79, 70, 229, 0.08),
+                  transparent 35%
+          ),
+          #f6f8fc;
+}
+
+/* Decoraciones */
+
+.background-decoration {
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  opacity: 0.3;
+
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.decoration-one {
+  top: -100px;
+  left: -80px;
+
+  background: #2563eb;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.decoration-two {
+  bottom: -120px;
+  right: -60px;
+
+  background: #7c3aed;
+}
+
+/* Tarjeta */
+
+.login-card,
+.dashboard-card {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  max-width: 520px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid rgba(15, 23, 42, 0.08);
+
+  border-radius: 24px;
+
+  padding: 38px;
+
+  box-shadow:
+          0 24px 60px rgba(15, 23, 42, 0.08),
+          0 4px 14px rgba(15, 23, 42, 0.04);
+}
+
+/* Marca */
+
+.brand {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon {
+  width: 46px;
+  height: 46px;
+
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+
+  border-radius: 14px;
+
+  background: #111827;
   color: white;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.15);
 }
 
-.App-link {
-  color: #61dafb;
+.brand h1 {
+  margin: 1px 0 0;
+
+  font-size: 22px;
+  letter-spacing: -0.5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.brand-label {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+}
+
+/* Login */
+
+.login-content {
+  margin-top: 55px;
+}
+
+.status-badge {
+  display: inline-flex;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  background: #eef4ff;
+  color: #2563eb;
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.login-content h2 {
+  margin: 18px 0 10px;
+
+  font-size: 36px;
+  line-height: 1.1;
+
+  letter-spacing: -1px;
+}
+
+.login-description {
+  margin: 0 0 32px;
+
+  max-width: 420px;
+
+  color: #64748b;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Microsoft */
+
+.microsoft-button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 14px 18px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #111827;
+  color: white;
+
+  cursor: pointer;
+
+  font-weight: 600;
+  font-size: 14px;
+
+  transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease,
+          background 0.2s ease;
+}
+
+.microsoft-button:hover {
+  background: #1f2937;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.15);
+}
+
+.microsoft-button:active {
+  transform: translateY(0);
+}
+
+.microsoft-logo {
+  width: 18px;
+  height: 18px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+
+  gap: 2px;
+}
+
+.microsoft-logo span:nth-child(1) {
+  background: #f25022;
+}
+
+.microsoft-logo span:nth-child(2) {
+  background: #7fba00;
+}
+
+.microsoft-logo span:nth-child(3) {
+  background: #00a4ef;
+}
+
+.microsoft-logo span:nth-child(4) {
+  background: #ffb900;
+}
+
+.login-footer {
+  margin-top: 35px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid #edf0f5;
+
+  color: #94a3b8;
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+/* Dashboard */
+
+.dashboard-card {
+  max-width: 650px;
+}
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding-bottom: 28px;
+
+  border-bottom: 1px solid #edf0f5;
+}
+
+.logout-button {
+  padding: 10px 16px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  background: white;
+  color: #475569;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.logout-button:hover {
+  border-color: #fecaca;
+
+  background: #fff5f5;
+  color: #dc2626;
+}
+
+/* Bienvenida */
+
+.welcome-section {
+  display: flex;
+  align-items: center;
+
+  gap: 18px;
+
+  margin: 35px 0;
+}
+
+.avatar {
+  flex-shrink: 0;
+
+  width: 64px;
+  height: 64px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: linear-gradient(
+          135deg,
+          #2563eb,
+          #4f46e5
+  );
+
+  color: white;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.18);
+}
+
+.welcome-label {
+  margin: 0 0 5px;
+
+  color: #16a34a;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.welcome-section h2 {
+  margin: 0;
+
+  font-size: 27px;
+
+  letter-spacing: -0.6px;
+}
+
+.welcome-section p:last-child {
+  margin: 8px 0 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+/* Información usuario */
+
+.user-card {
+  overflow: hidden;
+
+  border: 1px solid #e8edf4;
+
+  border-radius: 16px;
+
+  background: #fafbfc;
+}
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 17px 20px;
+
+  border-bottom: 1px solid #e8edf4;
+}
+
+.user-row:last-child {
+  border-bottom: none;
+}
+
+.user-label {
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.user-value {
+  max-width: 65%;
+
+  color: #1e293b;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-align: right;
+  word-break: break-word;
+}
+
+.authenticated-status {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  color: #15803d;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+}
+
+.dashboard-message {
+  margin: 24px 0 0;
+
+  padding: 14px 16px;
+
+  border-radius: 12px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+  .app {
+    padding: 16px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .login-card,
+  .dashboard-card {
+    padding: 26px;
+
+    border-radius: 20px;
+  }
+
+  .login-content {
+    margin-top: 40px;
+  }
+
+  .login-content h2 {
+    font-size: 30px;
+  }
+
+  .dashboard-header {
+    align-items: flex-start;
+  }
+
+  .welcome-section {
+    align-items: flex-start;
+  }
+
+  .user-row {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 6px;
+  }
+
+  .user-value {
+    max-width: 100%;
+
+    text-align: left;
   }
 }
