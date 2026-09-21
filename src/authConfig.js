@@ -13,8 +13,7 @@ export const msalConfig = {
 };
 
 export const loginRequest = {
-    scopes: ["openid", "profile", "email"],
-    prompt: "select_account" // Forzar a que se muestre el selector de cuenta.
+    scopes: ["openid", "profile", "email"]
 };
 
 export const apiRequest = {
@@ -22,4 +21,3 @@ export const apiRequest = {
         "api://d1415a07-a5cf-45a2-b55d-193b5b47594a/access_ass_user"
     ]
 };
-
