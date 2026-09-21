@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 
+
 html,
 body,
 #root {
@@ -9,21 +10,35 @@ body,
   min-height: 100%;
 }
 
-body {
-  font-family:
-          Inter,
-          -apple-system,
-          BlinkMacSystemFont,
-          "Segoe UI",
-          sans-serif;
 
-  background: #f4f7fb;
-  color: #182230;
+body {
+  margin: 0;
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  color: #172033;
+
+  background: #f5f7fb;
 }
+
 
 button {
   font: inherit;
 }
+
+
+
+/* ========================================= */
+/* APP                                       */
+/* ========================================= */
 
 .app {
   min-height: 100vh;
@@ -32,57 +47,68 @@ button {
   align-items: center;
   justify-content: center;
 
-  padding: 24px;
-
   position: relative;
+
   overflow: hidden;
 
+  padding: 32px 20px;
+
   background:
-          radial-gradient(
-                  circle at top left,
-                  rgba(37, 99, 235, 0.09),
-                  transparent 35%
-          ),
-          radial-gradient(
-                  circle at bottom right,
-                  rgba(79, 70, 229, 0.08),
-                  transparent 35%
-          ),
-          #f6f8fc;
+    radial-gradient(
+      circle at top left,
+      rgba(37, 99, 235, 0.1),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(79, 70, 229, 0.08),
+      transparent 32%
+    ),
+    #f6f8fc;
 }
 
-/* Decoraciones */
+
+
+/* ========================================= */
+/* DECORACIÓN                                */
+/* ========================================= */
 
 .background-decoration {
   position: absolute;
 
-  width: 320px;
-  height: 320px;
+  width: 350px;
+  height: 350px;
 
   border-radius: 50%;
 
-  filter: blur(90px);
+  filter: blur(100px);
 
-  opacity: 0.3;
+  opacity: 0.25;
 
   pointer-events: none;
 }
 
+
 .decoration-one {
-  top: -100px;
-  left: -80px;
+  top: -150px;
+  left: -100px;
 
   background: #2563eb;
 }
 
+
 .decoration-two {
-  bottom: -120px;
-  right: -60px;
+  right: -100px;
+  bottom: -150px;
 
   background: #7c3aed;
 }
 
-/* Tarjeta */
+
+
+/* ========================================= */
+/* TARJETAS                                  */
+/* ========================================= */
 
 .login-card,
 .dashboard-card {
@@ -90,28 +116,57 @@ button {
   z-index: 1;
 
   width: 100%;
-  max-width: 520px;
 
-  background: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.97);
 
   border: 1px solid rgba(15, 23, 42, 0.08);
 
   border-radius: 24px;
 
-  padding: 38px;
-
   box-shadow:
-          0 24px 60px rgba(15, 23, 42, 0.08),
-          0 4px 14px rgba(15, 23, 42, 0.04);
+    0 24px 60px rgba(15, 23, 42, 0.08),
+    0 4px 16px rgba(15, 23, 42, 0.04);
 }
 
-/* Marca */
+
+.login-card {
+  max-width: 500px;
+
+  padding: 38px;
+}
+
+
+.dashboard-card {
+  max-width: 680px;
+
+  padding: 38px;
+}
+
+
+
+/* ========================================= */
+/* MARCA                                     */
+/* ========================================= */
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+
+  gap: 13px;
 }
+
+
+.brand h1 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 23px;
+  font-weight: 750;
+
+  letter-spacing: -0.7px;
+}
+
 
 .brand-icon {
   width: 46px;
@@ -124,65 +179,43 @@ button {
   border-radius: 14px;
 
   background: #111827;
+
   color: white;
 
   font-size: 20px;
   font-weight: 700;
 
-  box-shadow: 0 8px 18px rgba(17, 24, 39, 0.15);
+  box-shadow:
+    0 8px 18px rgba(17, 24, 39, 0.15);
 }
 
-.brand h1 {
-  margin: 1px 0 0;
 
-  font-size: 22px;
-  letter-spacing: -0.5px;
-}
 
-.brand-label {
-  margin: 0;
-
-  color: #64748b;
-
-  font-size: 10px;
-  font-weight: 700;
-
-  letter-spacing: 1.5px;
-}
-
-/* Login */
+/* ========================================= */
+/* LOGIN                                     */
+/* ========================================= */
 
 .login-content {
-  margin-top: 55px;
+  margin-top: 58px;
 }
 
-.status-badge {
-  display: inline-flex;
-
-  padding: 7px 12px;
-
-  border-radius: 999px;
-
-  background: #eef4ff;
-  color: #2563eb;
-
-  font-size: 12px;
-  font-weight: 600;
-}
 
 .login-content h2 {
-  margin: 18px 0 10px;
+  margin: 0 0 12px;
 
-  font-size: 36px;
-  line-height: 1.1;
+  color: #172033;
 
-  letter-spacing: -1px;
+  font-size: 38px;
+  font-weight: 750;
+
+  letter-spacing: -1.2px;
 }
+
 
 .login-description {
   margin: 0 0 32px;
 
-  max-width: 420px;
+  max-width: 400px;
 
   color: #64748b;
 
@@ -190,7 +223,11 @@ button {
   line-height: 1.7;
 }
 
-/* Microsoft */
+
+
+/* ========================================= */
+/* BOTÓN MICROSOFT                           */
+/* ========================================= */
 
 .microsoft-button {
   width: 100%;
@@ -201,36 +238,44 @@ button {
 
   gap: 12px;
 
-  padding: 14px 18px;
+  padding: 15px 20px;
 
   border: none;
   border-radius: 12px;
 
   background: #111827;
+
   color: white;
 
   cursor: pointer;
 
-  font-weight: 600;
   font-size: 14px;
+  font-weight: 650;
 
   transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease,
-          background 0.2s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
+
 
 .microsoft-button:hover {
   background: #1f2937;
 
   transform: translateY(-1px);
 
-  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.15);
+  box-shadow:
+    0 10px 24px rgba(17, 24, 39, 0.16);
 }
+
 
 .microsoft-button:active {
   transform: translateY(0);
 }
+
+
+
+/* Microsoft logo */
 
 .microsoft-logo {
   width: 18px;
@@ -244,24 +289,30 @@ button {
   gap: 2px;
 }
 
+
 .microsoft-logo span:nth-child(1) {
   background: #f25022;
 }
+
 
 .microsoft-logo span:nth-child(2) {
   background: #7fba00;
 }
 
+
 .microsoft-logo span:nth-child(3) {
   background: #00a4ef;
 }
+
 
 .microsoft-logo span:nth-child(4) {
   background: #ffb900;
 }
 
+
+
 .login-footer {
-  margin-top: 35px;
+  margin-top: 36px;
 
   padding-top: 22px;
 
@@ -274,11 +325,11 @@ button {
   text-align: center;
 }
 
-/* Dashboard */
 
-.dashboard-card {
-  max-width: 650px;
-}
+
+/* ========================================= */
+/* HEADER DASHBOARD                          */
+/* ========================================= */
 
 .dashboard-header {
   display: flex;
@@ -292,6 +343,12 @@ button {
   border-bottom: 1px solid #edf0f5;
 }
 
+
+
+/* ========================================= */
+/* LOGOUT                                    */
+/* ========================================= */
+
 .logout-button {
   padding: 10px 16px;
 
@@ -299,24 +356,34 @@ button {
   border-radius: 10px;
 
   background: white;
-  color: #475569;
 
-  font-size: 13px;
-  font-weight: 600;
+  color: #475569;
 
   cursor: pointer;
 
-  transition: all 0.2s ease;
+  font-size: 13px;
+  font-weight: 650;
+
+  transition:
+    background 0.2s ease,
+    border 0.2s ease,
+    color 0.2s ease;
 }
+
 
 .logout-button:hover {
   border-color: #fecaca;
 
   background: #fff5f5;
+
   color: #dc2626;
 }
 
-/* Bienvenida */
+
+
+/* ========================================= */
+/* BIENVENIDA                                */
+/* ========================================= */
 
 .welcome-section {
   display: flex;
@@ -324,14 +391,15 @@ button {
 
   gap: 18px;
 
-  margin: 35px 0;
+  margin: 34px 0;
 }
+
 
 .avatar {
   flex-shrink: 0;
 
-  width: 64px;
-  height: 64px;
+  width: 66px;
+  height: 66px;
 
   display: flex;
   align-items: center;
@@ -339,21 +407,24 @@ button {
 
   border-radius: 18px;
 
-  background: linear-gradient(
-          135deg,
-          #2563eb,
-          #4f46e5
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #2563eb,
+      #4f46e5
+    );
 
   color: white;
 
   font-size: 20px;
-  font-weight: 700;
+  font-weight: 750;
 
-  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.18);
+  box-shadow:
+    0 10px 25px rgba(37, 99, 235, 0.2);
 }
 
-.welcome-label {
+
+.authenticated-label {
   margin: 0 0 5px;
 
   color: #16a34a;
@@ -362,25 +433,32 @@ button {
   font-weight: 700;
 }
 
+
 .welcome-section h2 {
   margin: 0;
 
-  font-size: 27px;
+  color: #172033;
 
-  letter-spacing: -0.6px;
+  font-size: 28px;
+
+  letter-spacing: -0.7px;
 }
 
-.welcome-section p:last-child {
-  margin: 8px 0 0;
+
+.welcome-description {
+  margin: 7px 0 0;
 
   color: #64748b;
 
   font-size: 14px;
-
   line-height: 1.5;
 }
 
-/* Información usuario */
+
+
+/* ========================================= */
+/* DATOS DEL USUARIO                         */
+/* ========================================= */
 
 .user-card {
   overflow: hidden;
@@ -392,10 +470,11 @@ button {
   background: #fafbfc;
 }
 
+
 .user-row {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   gap: 20px;
 
@@ -404,39 +483,61 @@ button {
   border-bottom: 1px solid #e8edf4;
 }
 
+
 .user-row:last-child {
   border-bottom: none;
 }
 
+
 .user-label {
+  flex-shrink: 0;
+
   color: #64748b;
 
   font-size: 13px;
 }
 
+
 .user-value {
-  max-width: 65%;
+  max-width: 70%;
 
   color: #1e293b;
 
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 650;
 
   text-align: right;
+
   word-break: break-word;
 }
+
+
+.claim-value {
+  font-family:
+    "SFMono-Regular",
+    Consolas,
+    "Liberation Mono",
+    monospace;
+
+  font-size: 11px;
+}
+
+
+
+/* Estado */
 
 .authenticated-status {
   display: flex;
   align-items: center;
 
-  gap: 7px;
+  gap: 8px;
 
   color: #15803d;
 
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 650;
 }
+
 
 .status-dot {
   width: 8px;
@@ -446,31 +547,212 @@ button {
 
   background: #22c55e;
 
-  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+  box-shadow:
+    0 0 0 4px rgba(34, 197, 94, 0.12);
 }
 
-.dashboard-message {
-  margin: 24px 0 0;
 
-  padding: 14px 16px;
+
+/* ========================================= */
+/* ACCESS TOKEN                              */
+/* ========================================= */
+
+.token-section {
+  margin-top: 28px;
+
+  padding: 22px;
+
+  border: 1px solid #e8edf4;
+  border-radius: 16px;
+
+  background: white;
+}
+
+
+.token-title h3 {
+  margin: 0;
+
+  color: #172033;
+
+  font-size: 17px;
+}
+
+
+.token-title p {
+  margin: 7px 0 20px;
+
+  color: #64748b;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+.token-button {
+  padding: 12px 18px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #2563eb;
+
+  color: white;
+
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.token-button:hover {
+  background: #1d4ed8;
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 18px rgba(37, 99, 235, 0.18);
+}
+
+
+
+/* ========================================= */
+/* MENSAJES                                  */
+/* ========================================= */
+
+.success-message {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-top: 16px;
+
+  padding: 12px 14px;
+
+  border: 1px solid #bbf7d0;
+  border-radius: 10px;
+
+  background: #f0fdf4;
+
+  color: #15803d;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+
+.success-icon {
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #22c55e;
+
+  color: white;
+
+  font-size: 12px;
+}
+
+
+.error-message {
+  margin-top: 16px;
+
+  padding: 12px 14px;
+
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+
+  background: #fef2f2;
+
+  color: #b91c1c;
+
+  font-size: 13px;
+}
+
+
+
+/* ========================================= */
+/* API INFO                                  */
+/* ========================================= */
+
+.api-info {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 12px;
+
+  margin-top: 22px;
+
+  padding: 15px;
 
   border-radius: 12px;
 
   background: #f8fafc;
 
+  color: #475569;
+}
+
+
+.api-info-icon {
+  flex-shrink: 0;
+
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #e2e8f0;
+
+  color: #475569;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+.api-info strong {
+  color: #334155;
+
+  font-size: 13px;
+}
+
+
+.api-info p {
+  margin: 4px 0 0;
+
   color: #64748b;
 
   font-size: 12px;
-
   line-height: 1.5;
 }
 
-/* Responsive */
+
+
+/* ========================================= */
+/* RESPONSIVE                                */
+/* ========================================= */
 
 @media (max-width: 600px) {
+
   .app {
-    padding: 16px;
+    padding: 18px;
   }
+
 
   .login-card,
   .dashboard-card {
@@ -479,21 +761,26 @@ button {
     border-radius: 20px;
   }
 
+
   .login-content {
-    margin-top: 40px;
+    margin-top: 42px;
   }
 
+
   .login-content h2 {
-    font-size: 30px;
+    font-size: 31px;
   }
+
 
   .dashboard-header {
     align-items: flex-start;
   }
 
+
   .welcome-section {
     align-items: flex-start;
   }
+
 
   .user-row {
     flex-direction: column;
@@ -502,9 +789,21 @@ button {
     gap: 6px;
   }
 
+
   .user-value {
     max-width: 100%;
 
     text-align: left;
   }
+
+
+  .dashboard-header .brand h1 {
+    font-size: 20px;
+  }
+
+
+  .logout-button {
+    padding: 9px 12px;
+  }
+
 }
