@@ -12,7 +12,7 @@ import {
 } from "./authConfig";
 
 import { useState } from "react";
-
+import { obtenerUsuarioBackend } from "./services/bffApi";
 
 function App() {
 
@@ -64,33 +64,47 @@ function App() {
    * OBTENER ACCESS TOKEN
    */
   const obtenerAccessToken = async () => {
-    if (!usuario) {
-      return;
-    }
 
-    try {
-      setErrorToken(null);
-      setTokenObtenido(false);
+      if (!usuario) {
+          return;
+      }
 
-      const tokenResponse = await instance.acquireTokenSilent({
-        ...apiRequest,
-        account: usuario
-      });
+      try {
 
-      const accessToken = tokenResponse.accessToken;
+          setErrorToken(null);
 
-      console.log("Access Token obtenido correctamente");
-      console.log("Scopes otorgados:", tokenResponse.scopes);
+          const tokenResponse = await instance.acquireTokenSilent({
+              ...apiRequest,
+              account: usuario
+          });
 
-      setTokenObtenido(true);
+          const accessToken = tokenResponse.accessToken;
+          console.log("ACCESS TOKEN COMPLETO:", accessToken);
 
-    } catch (error) {
-      console.error("Error obteniendo Access Token:", error);
+          console.log("Access Token obtenido correctamente");
 
-      setErrorToken(
-        "No fue posible obtener el Access Token."
-      );
-    }
+          setTokenObtenido(true);
+
+          // ================================
+          // LLAMADA AL BFF
+          // ================================
+
+          const usuarioBackend =
+              await obtenerUsuarioBackend(accessToken);
+
+          console.log(
+              "Respuesta del BFF:",
+              usuarioBackend
+          );
+
+      } catch (error) {
+
+          console.error("Error:", error);
+
+          setErrorToken(
+              "No fue posible obtener el Access Token o conectar con el BFF."
+          );
+      }
   };
 
 
