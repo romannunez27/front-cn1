@@ -1,10 +1,9 @@
 import React from "react";
 
-import Avatar from "../../atoms/Avatar";
+import Avatar from "../../atoms/Avatar/Avatar";
 
-import Button from "../../atoms/Button";
-
-
+import Button from "../../atoms/Button/Button";
+import "./UserMenu.css"
 function UserMenu({
 
                       name,
@@ -12,7 +11,6 @@ function UserMenu({
                       role,
 
                       onLogout
-
 
                   }){
 
@@ -43,7 +41,8 @@ function UserMenu({
             />
 
 
-            <div>
+
+            <div className="user-info">
 
 
                 <strong>
@@ -62,14 +61,28 @@ function UserMenu({
 
             </div>
 
+
+
             <Button
+
                 variant="danger"
+
                 onClick={onLogout}
+
             >
+
                 Salir
+
             </Button>
 
+
+
         </div>
+
     );
+
+
 }
+
+
 export default UserMenu;

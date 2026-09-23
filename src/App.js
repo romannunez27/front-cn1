@@ -35,12 +35,17 @@ function App(){
                         <div className="card">
                             <div className="card-body">
                                 <h2>
-                                    Bienvenido
-                                    {" "}
-                                    {usuario.name}
+
+                                    Bienvenido, {usuario.name} 👋
+
                                 </h2>
+
                                 <p>
-                                    Usuario autenticado mediante Microsoft Entra ID.
+
+                                    Tu sesión está activa mediante Microsoft Entra ID.
+
+                                    Gestiona tus operaciones desde el menú lateral.
+
                                 </p>
                             </div>
                         </div>

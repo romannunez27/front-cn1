@@ -5,11 +5,11 @@ import {
 } from "react-router-dom";
 
 
-import "./SidebarItem.css";
+import "./SideBarItem.css";
 
 
 
-function SidebarItem({
+function SideBarItem({
                          icon,
                          label,
                          path
@@ -34,4 +34,4 @@ function SidebarItem({
         </NavLink>
     );
 }
-export default SidebarItem;
+export default SideBarItem;

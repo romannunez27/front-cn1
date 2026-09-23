@@ -1,29 +1,37 @@
 import React from "react";
-
 import {
     useMsal
 } from "@azure/msal-react";
-function Header(){
+import {
+    ROLE_LABELS
+} from "../../auth/roles";
+import useAuthUser from "../../auth/useAuthUser";
+import UserMenu from "../molecules/UserMenu/UserMenu";
+import "./Header.css";
+function Header() {
     const {
         instance
     } = useMsal();
-    const cerrarSesion = () => {
+    const {
+        user,
+        roles
+    } = useAuthUser();
+    const logout = () => {
         instance.logoutRedirect({
             postLogoutRedirectUri:
             window.location.origin
         });
     };
     return (
-        <header className="navbar navbar-light bg-white border-bottom px-4">
-            <span className="navbar-brand">
+        <header className="header">
+            <h4>
                 Panel MesaTech Cloud
-            </span>
-            <button
-                className="btn btn-outline-danger"
-                onClick={cerrarSesion}
-            >
-                Cerrar sesión
-            </button>
+            </h4>
+            <UserMenu
+                name={user?.name}
+                role={ROLE_LABELS[roles[0]]}
+                onLogout={logout}
+            />
         </header>
     );
 }

@@ -7,3 +7,12 @@ export const ROLES = {
     ADMIN:"ROLE_ADMIN"
 
 };
+export const ROLE_LABELS = {
+
+    ROLE_USER:"Usuario",
+
+    ROLE_OPERATOR:"Operador",
+
+    ROLE_ADMIN:"Administrador"
+
+};
