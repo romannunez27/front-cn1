@@ -1,0 +1,26 @@
+.card-custom {
+
+    background:white;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:12px;
+    box-shadow:
+
+            0 4px 12px rgba(0,0,0,0.05);
+
+
+}
+.card-title {
+    padding:16px;
+
+    font-weight:700;
+
+    border-bottom:1px solid #e2e8f0;
+
+}
+.card-body {
+
+    padding:20px;
+
+}
