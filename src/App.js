@@ -1,5 +1,5 @@
 import React from "react";
-
+import AppRoutes from "./routes/AppRoutes";
 import {
 
     AuthenticatedTemplate,
@@ -32,23 +32,9 @@ function App(){
                 {
                     usuario &&
                     <MainLayout>
-                        <div className="card">
-                            <div className="card-body">
-                                <h2>
 
-                                    Bienvenido, {usuario.name} 👋
+                        <AppRoutes />
 
-                                </h2>
-
-                                <p>
-
-                                    Tu sesión está activa mediante Microsoft Entra ID.
-
-                                    Gestiona tus operaciones desde el menú lateral.
-
-                                </p>
-                            </div>
-                        </div>
                     </MainLayout>
                 }
             </AuthenticatedTemplate>
