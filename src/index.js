@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-
+import {BrowserRouter} from "react-router-dom";
 import App from "./App";
 
 import {
@@ -15,7 +15,7 @@ import {
 
 import {
     msalConfig
-} from "./authConfig";
+} from "./auth/authConfig";
 
 
 /*
@@ -36,16 +36,14 @@ const root =
 
 root.render(
 
-    <React.StrictMode>
+    <BrowserRouter>
 
-        <MsalProvider
-            instance={msalInstance}
-        >
+        <MsalProvider instance={msalInstance}>
 
             <App />
 
         </MsalProvider>
 
-    </React.StrictMode>
+    </BrowserRouter>
 
 );

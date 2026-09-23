@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { PublicClientApplication } from '@azure/msal-browser';
 import { MsalProvider } from '@azure/msal-react';
-import { msalConfig } from './authConfig';
+import { msalConfig } from './auth/authConfig';
 import App from './App';
 
 test('muestra el estado no autenticado', async () => {
