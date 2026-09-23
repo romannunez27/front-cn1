@@ -1,0 +1,20 @@
+.user-menu {
+
+
+    display:flex;
+
+
+    align-items:center;
+
+
+    gap:12px;
+
+
+}
+
+
+
+.user-menu small {
+    display:block;
+    color:#64748b;
+}
