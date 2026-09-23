@@ -18,9 +18,11 @@ import OperatorHome
 
 import AccessDenied
     from "../features/common/AccessDenied";
-
-
-
+//Rutas de Uuario//
+import CrearSolicitud
+    from "../features/solicitudes/pages/CrearSolicitud";
+import MisSolicitudes
+    from "../features/solicitudes/pages/MisSolicitudes";
 function AppRoutes(){
 
 
@@ -42,9 +44,51 @@ function AppRoutes(){
                 }
 
             />
+            {/* rutas usuario */}
+            <Route
 
+                path="/crear-solicitud"
 
+                element={
 
+                    <ProtectedRoute
+
+                        allowedRoles={[
+                            "ROLE_USER"
+                        ]}
+
+                    >
+
+                        <CrearSolicitud />
+
+                    </ProtectedRoute>
+
+                }
+
+            />
+            <Route
+
+                path="/solicitudes"
+
+                element={
+
+                    <ProtectedRoute
+
+                        allowedRoles={[
+                            "ROLE_USER"
+                        ]}
+
+                    >
+
+                        <MisSolicitudes />
+
+                    </ProtectedRoute>
+
+                }
+
+            />
+
+            {/* rutas Admin */}
             <Route
 
                 path="/admin"
@@ -68,7 +112,7 @@ function AppRoutes(){
             />
 
 
-
+            {/* rutas Operador */}
             <Route
 
                 path="/operador"
