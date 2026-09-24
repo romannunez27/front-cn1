@@ -5,8 +5,6 @@ import useAuthUser from "../../auth/useAuthUser";
 import "./SideBar.css";
 
 const menuItems = [
-
-
     {
         name:"Inicio",
         path:"/",
@@ -17,8 +15,6 @@ const menuItems = [
             "ROLE_ADMIN"
         ]
     },
-
-
     {
         name:"Crear solicitud",
         path:"/crear-solicitud",
@@ -27,8 +23,6 @@ const menuItems = [
             "ROLE_USER"
         ]
     },
-
-
     {
         name:"Mis solicitudes",
         path:"/solicitudes",
@@ -37,8 +31,6 @@ const menuItems = [
             "ROLE_USER"
         ]
     },
-
-
     {
         name:"Gestión solicitudes",
         path:"/operador",
@@ -54,7 +46,6 @@ const menuItems = [
         roles:[
             "ROLE_ADMIN"
         ]
-
     },
     {
         name:"Catálogo",
@@ -63,6 +54,15 @@ const menuItems = [
         roles:[
             "ROLE_ADMIN"
         ]
+    },
+    {
+        name:"Catálogo V2",
+        icon:"🧪",
+        path:"/catalogo-v2",
+        roles:[
+            "ROLE_ADMIN"
+        ]
+
     }
 ];
 

@@ -74,3 +74,16 @@ export const eliminarPrioridad = async(id)=>{
         `/v1/catalogo/prioridades/${id}`
     );
 };
+export const obtenerCatalogoV2 = async()=>{
+
+
+    const response =
+        await bffApi.get(
+            "/v2/catalogo"
+        );
+
+
+    return response.data;
+
+
+};

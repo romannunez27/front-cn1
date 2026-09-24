@@ -1,0 +1,97 @@
+.user-profile-card{
+
+    background: white;
+
+    border-radius: 10px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #ddd;
+
+}
+
+
+
+.user-profile-header{
+
+    margin-bottom: 15px;
+
+}
+
+
+
+.user-profile-header h5{
+
+    margin: 0;
+
+    font-weight: 600;
+
+}
+
+
+
+.user-profile-body{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+
+.user-profile-item{
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 8px 0;
+
+    border-bottom: 1px solid #eee;
+
+}
+
+
+
+.user-profile-item:last-child{
+
+    border-bottom: none;
+
+}
+
+
+
+.user-profile-item span{
+
+    font-weight: 500;
+
+    color: #666;
+
+}
+
+
+
+.user-profile-item strong{
+
+    text-align: right;
+
+    max-width: 60%;
+
+    word-break: break-word;
+
+}
+
+
+
+.claim-value{
+
+    font-size: 0.85rem;
+
+}
