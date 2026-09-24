@@ -9,7 +9,8 @@ import SolicitudForm
 
 
 import {
-     obtenerCategorias
+     obtenerCategorias,
+    obtenerPrioridades
 } from "../../../services/catalogService";
 
 
@@ -67,12 +68,22 @@ function CrearSolicitud(){
         try {
 
 
-            const data =
+            const categorias =
                 await obtenerCategorias();
 
 
-            setCatalogo(data);
+            const prioridades =
+                await obtenerPrioridades();
 
+
+
+            setCatalogo({
+
+                categorias,
+
+                prioridades
+
+            });
 
 
         }catch(error){
