@@ -3,18 +3,13 @@ import {
     Route
 } from "react-router-dom";
 
-
 import ProtectedRoute
     from "../components/molecules/ProtectedRoute/ProtectedRoute";
 
-
 import AdminHome
     from "../features/administrador/AdminHome";
-
-
 import OperatorHome
-    from "../features/operador/OperatorHome";
-
+    from "../features/operador/pages/OperatorHome";
 
 import AccessDenied
     from "../features/common/AccessDenied";
@@ -23,9 +18,16 @@ import CrearSolicitud
     from "../features/solicitudes/pages/CrearSolicitud";
 import MisSolicitudes
     from "../features/solicitudes/pages/MisSolicitudes";
+
+//Rutas admin//
+import AsignacionSolicitudes
+    from "../features/administrador/pages/AsignacionSolicitudes";
+import GestionCatalogo
+    from "../features/administrador/pages/GestionCatalogo";
+//Rutas operador
+import SolicitudesAsignadas
+    from "../features/operador/pages/SolicitudesAsignadas";
 function AppRoutes(){
-
-
     return (
 
         <Routes>
@@ -54,7 +56,9 @@ function AppRoutes(){
                     <ProtectedRoute
 
                         allowedRoles={[
-                            "ROLE_USER"
+                            "ROLE_USER",
+                            "ROLE_ADMIN",
+                            "ROLE_OPERATOR"
                         ]}
 
                     >
@@ -110,6 +114,69 @@ function AppRoutes(){
                 }
 
             />
+            <Route
+
+                path="/catalogo"
+
+                element={
+
+                    <ProtectedRoute
+
+                        allowedRoles={[
+                            "ROLE_ADMIN"
+                        ]}
+
+                    >
+
+                        <GestionCatalogo />
+
+                    </ProtectedRoute>
+
+                }
+
+            />
+            <Route
+
+                path="/administracion"
+
+                element={
+
+                    <ProtectedRoute
+
+                        allowedRoles={[
+                            "ROLE_ADMIN"
+                        ]}
+
+                    >
+
+                        <AsignacionSolicitudes />
+
+                    </ProtectedRoute>
+
+                }
+
+            />
+            <Route
+
+                path="/catalogo"
+
+                element={
+
+                    <ProtectedRoute
+
+                        allowedRoles={[
+                            "ROLE_ADMIN"
+                        ]}
+
+                    >
+
+                        <GestionCatalogo />
+
+                    </ProtectedRoute>
+
+                }
+
+            />
 
 
             {/* rutas Operador */}
@@ -127,7 +194,7 @@ function AppRoutes(){
 
                     >
 
-                        <OperatorHome />
+                        <SolicitudesAsignadas />
 
                     </ProtectedRoute>
 

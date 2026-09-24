@@ -9,7 +9,7 @@ import SolicitudForm
 
 
 import {
-    obtenerCatalogo
+     obtenerCategorias
 } from "../../../services/catalogService";
 
 
@@ -68,7 +68,7 @@ function CrearSolicitud(){
 
 
             const data =
-                await obtenerCatalogo();
+                await obtenerCategorias();
 
 
             setCatalogo(data);
@@ -79,7 +79,7 @@ function CrearSolicitud(){
 
 
             console.error(
-                "Error cargando catálogo",
+                "Error cargando categorias",
                 error
             );
 

@@ -54,6 +54,15 @@ const menuItems = [
         roles:[
             "ROLE_ADMIN"
         ]
+
+    },
+    {
+        name:"Catálogo",
+        icon:"📚",
+        path:"/catalogo",
+        roles:[
+            "ROLE_ADMIN"
+        ]
     }
 ];
 

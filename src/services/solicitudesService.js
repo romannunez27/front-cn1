@@ -45,7 +45,7 @@ export const obtenerTodasLasSolicitudes = async()=>{
 };
 
 
-
+// Operador
 export const actualizarEstado = async(id,data)=>{
 
 
@@ -55,6 +55,100 @@ export const actualizarEstado = async(id,data)=>{
             data
         );
 
+
+    return response.data;
+
+};
+
+export const obtenerSolicitudesOperador = async()=>{
+
+
+    const response =
+        await bffApi.get(
+            "/v1/solicitudes"
+        );
+
+
+    return response.data;
+
+};
+export const actualizarEstadoSolicitud = async(
+    id,
+    estado
+)=>{
+
+
+    const response =
+        await bffApi.patch(
+
+            `/v1/solicitudes/${id}/estado`,
+
+            {
+                estado
+            }
+
+        );
+
+
+    return response.data;
+
+};
+export const registrarAtencion = async(
+    id,
+    detalle
+)=>{
+
+
+    const response =
+        await bffApi.patch(
+
+            `/v1/solicitudes/${id}/atencion`,
+
+            {
+                detalle
+            }
+
+        );
+
+
+    return response.data;
+
+};
+//Funciones admin
+export const obtenerSolicitudesDisponibles = async()=>{
+
+
+    const response =
+        await bffApi.get(
+            "/v1/solicitudes"
+        );
+    return response.data;
+};
+
+export const asignarSolicitud = async(
+    id,
+    operador
+)=>{
+
+    const response =
+        await bffApi.patch(
+
+            `/v1/solicitudes/${id}/asignacion`,
+
+            {
+                operador
+            }
+
+        );
+    return response.data;
+
+};
+export const obtenerSolicitudesAsignadas = async()=>{
+
+    const response =
+        await bffApi.get(
+            "/v1/solicitudes/asignadas"
+        );
 
     return response.data;
 
