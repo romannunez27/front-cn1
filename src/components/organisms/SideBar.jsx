@@ -24,7 +24,7 @@ const menuItems = [
         path:"/crear-solicitud",
         icon:"➕",
         roles:[
-            "ROLE_USER","ROLE_OPERATOR","ROLE_ADMIN"
+            "ROLE_USER"
         ]
     },
 
