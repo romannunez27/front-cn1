@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import AppRoutes from "./routes/AppRoutes";
+
 import {
-
     AuthenticatedTemplate,
-
     UnauthenticatedTemplate,
-
     useMsal
-
 } from "@azure/msal-react";
 
 import MainLayout from "./components/templates/MainLayout";
@@ -16,11 +14,25 @@ import Login from "./components/templates/Login";
 
 import AuthInitializer from "./auth/AuthInitializer";
 
+import { configurarInterceptor } from "./services/authInterceptor";
+
+
 function App(){
 
+
     const {
-        accounts
+        accounts,
+        instance
     } = useMsal();
+
+
+
+    useEffect(() => {
+
+        configurarInterceptor(instance);
+
+    }, [instance]);
+
 
 
     const usuario =
@@ -29,13 +41,17 @@ function App(){
             : null;
 
 
+
     return (
 
         <AuthInitializer>
 
             <UnauthenticatedTemplate>
+
                 <Login />
+
             </UnauthenticatedTemplate>
+
 
 
             <AuthenticatedTemplate>
@@ -57,4 +73,6 @@ function App(){
     );
 
 }
+
+
 export default App;

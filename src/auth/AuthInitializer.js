@@ -1,19 +1,21 @@
 import { useEffect } from "react";
 import { useMsal } from "@azure/msal-react";
-import { apiRequest } from "./authConfig";
-import { configurarToken } from "../services/bffApi";
 
 
 function AuthInitializer({children}){
 
 
-    const { instance, accounts } = useMsal();
+    const {
+        instance,
+        accounts
+    } = useMsal();
+
 
 
     useEffect(()=>{
 
 
-        const obtenerToken = async()=>{
+        const validarSesion = async()=>{
 
 
             if(accounts.length === 0){
@@ -23,27 +25,22 @@ function AuthInitializer({children}){
 
             try{
 
-                const response =
-                    await instance.acquireTokenSilent({
-                        ...apiRequest,
-                        account: accounts[0]
-                    });
 
+                await instance.acquireTokenSilent({
 
-                configurarToken(
-                    response.accessToken
-                );
+                    account: accounts[0],
 
+                    scopes:[
+                        "api://33b8186d-805f-4136-8209-4af63d8f7388/access_as_user"
+                    ]
 
-                console.log(
-                    "Token BFF configurado"
-                );
+                });
 
 
             }catch(error){
 
                 console.error(
-                    "Error obteniendo token",
+                    "Error validando token",
                     error
                 );
 
@@ -53,7 +50,7 @@ function AuthInitializer({children}){
         };
 
 
-        obtenerToken();
+        validarSesion();
 
 
     },[
