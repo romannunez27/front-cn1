@@ -1,11 +1,8 @@
 import axios from "axios";
 
-
 const bffApi = axios.create({
 
-    baseURL:"http://localhost:8080"
-
+    baseURL: "https://nhc8ghvnz3.execute-api.us-east-1.amazonaws.com"
 });
-
 
 export default bffApi;
