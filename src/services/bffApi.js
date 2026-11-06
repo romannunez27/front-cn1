@@ -1,8 +1,7 @@
 import axios from "axios";
 
 const bffApi = axios.create({
-
-    baseURL: "https://nhc8ghvnz3.execute-api.us-east-1.amazonaws.com"
+    baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
 export default bffApi;

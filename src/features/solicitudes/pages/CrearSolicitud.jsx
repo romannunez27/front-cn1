@@ -8,10 +8,8 @@ import SolicitudForm
     from "../components/SolicitudForm";
 
 
-import {
-     obtenerCategorias,
-    obtenerPrioridades
-} from "../../../services/catalogService";
+import { obtenerPrioridades } from "../../../services/catalogService";
+import { obtenerCategoriasDisponibles } from "../../../services/solicitudesService";
 
 
 import {
@@ -69,7 +67,7 @@ function CrearSolicitud(){
 
 
             const categorias =
-                await obtenerCategorias();
+                await obtenerCategoriasDisponibles();
 
 
             const prioridades =

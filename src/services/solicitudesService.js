@@ -100,3 +100,8 @@ export const obtenerSolicitudesAsignadas = async()=>{
         );
     return response.data;
 };
+// EP2: categorias replicadas por RabbitMQ en RDS Solicitudes.
+export const obtenerCategoriasDisponibles = async () => {
+    const response = await bffApi.get("/v1/solicitudes/categorias");
+    return response.data;
+};
